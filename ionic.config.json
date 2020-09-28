@@ -1,5 +1,7 @@
 {
   "name": "imagepicker",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

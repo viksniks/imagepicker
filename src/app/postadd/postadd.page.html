@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar >
+   <ion-back-button slot="start" defaultHref="/"></ion-back-button> 
+   <ion-title color="light">POST</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formcontrol">
+    <div id="container">
+
+      <ion-item transparent>
+        <ion-label position="floating"></ion-label>
+        <p id="categorytype" >{{demo.categoryname}}</p>
+      </ion-item>
+
+      <ion-item transparent>
+        <ion-input  id="categorytype" >{{ today | date: 'dd/MM/yyyy HH:mm' }}</ion-input>
+          </ion-item>
+      
+          <ion-item transparent>
+            <ion-label position="floating">Name of the product</ion-label>
+    <ion-input formControlName="postadname" clearInput type="text" ></ion-input>
+          </ion-item>
+
+          <p class="error" *ngIf="isSubmitted && errorControl.postadname.errors?.required">
+            Name is required.
+          </p>
+
+        <p class="error" *ngIf="isSubmitted && errorControl.postadname.errors?.pattern">
+            Product name must contain only letters.
+          </p>
+         
+
+      <ion-item transparent>
+        <ion-label position="floating">Price of the product</ion-label>
+<ion-input formControlName="postadprice"  clearInput type="number" ></ion-input>
+      </ion-item>
+      <p class="error" *ngIf="isSubmitted && errorControl.postadprice.errors?.required">
+        Price is required.
+      </p>
+      <ion-item transparent>
+        <ion-label position="floating">Quantity of the product</ion-label>
+<ion-input formControlName="postadquant"  placeholder="Kgs" clearInput type="number"></ion-input>
+      </ion-item>
+      <p class="error" *ngIf="isSubmitted && errorControl.postadquant.errors?.required">
+        Quantity is required.
+      </p>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea class="ion-text-start" clearInput formControlName="postaddesc" type="text"  placeholder="Write Something of your product"
+         rows="5" cols="5"></ion-textarea>
+      </ion-item>
+      <p class="error" *ngIf="isSubmitted && errorControl.postaddesc.errors?.required">
+        Product description is required.
+      </p>
+      <ion-item>
+   
+        <ion-textarea  placeholder="choosen images to be listed here and should have an cancel options" formControlName="postadimage" class="ion-text-start"  type="text"  
+         rows="5" cols="5">
+         <span  style="border-color:#222;border-width:thin;border-style:solid;"  *ngFor="let image of images;let i=index;" >
+          
+         <img style="height:75px;width:75px;"  src="{{image}}" />
+         
+         
+         <p (click)="remove(i)" style="color:black;text-decoration: underline;font-size:14px;font-weight:bold;position:relative;left:100px;top:-80px;">Delete</p>
+         </span>
+        </ion-textarea>
+      </ion-item>
+     
+      <!-- <ion-grid >
+        <ion-col *ngFor="let image of images">
+            <img src="{{image}}" style="height: 150px;width:150px" />
+        </ion-col>
+    </ion-grid> -->
+    <!-- Images Buttons og Choosing  -->
+<ion-row>
+  <ion-col size="6">
+      <ion-button  (click)="pickImages()" >Choose Image&nbsp;
+    <ion-icon name="folder"></ion-icon>
+  </ion-button>
+  </ion-col>
+ <ion-col size="6">
+    <ion-button   (click)="getfromcamera()">Capture&nbsp;
+      <ion-icon name="camera">Camera</ion-icon>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+
+
+
+</div>
+ </form>
+  
+  
+
+  
+
+ 
+
+</ion-content>
+<!-- <ion-footer>
+  <ion-toolbar >
+    <div  (click)="getimage()"  class="ion-text-center">
+      Choose from gallery
+    </div>
+  
+    </ion-toolbar>
+</ion-footer> -->

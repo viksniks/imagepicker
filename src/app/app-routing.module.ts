@@ -8,8 +8,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'postadd',
     pathMatch: 'full'
+  },
+  {
+    path: 'postadd',
+    loadChildren: () => import('./postadd/postadd.module').then( m => m.PostaddPageModule)
   },
 ];
 
